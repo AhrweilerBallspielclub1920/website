@@ -1,0 +1,32 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHead from '../components/PageHead.astro';
+// PDFs beim Umzug nach public/downloads/ kopieren, dann Links unten auf /downloads/... umstellen.
+const alt = 'https://ahrweilerbc.com/wp-content/uploads';
+const dokumente = [
+  { titel: 'Mitgliedsantrag 2026', href: `${alt}/2026/10/Mitgliedsantrag2026.pdf` },
+  { titel: 'Beitragsordnung 2026', href: `${alt}/2026/10/Beitragsordnung2026.pdf` },
+  { titel: 'Satzung', href: `${alt}/2023/04/Neufassung_Satzung_Stand_20231002.pdf` },
+  { titel: 'ABC Magazin 7.2', href: `${alt}/2024/05/ABC_Umbruch-2024-homepage-1.pdf` }
+];
+---
+<Base title="Mitglied werden">
+  <PageHead titel="MITGLIED WERDEN" text="Werde Teil des ABC – als Spieler, Elternteil, Ehrenamtlicher oder Fan." />
+  <section class="section">
+    <div class="wrap row" style="gap:40px;align-items:flex-start">
+      <div class="stack-lg" style="flex:2 1 520px">
+        <div class="grid">
+          <div class="card stack" style="gap:8px"><span class="schritt-nr">1</span><h3>Antrag ausfüllen</h3><p class="muted small">Mitgliedsantrag herunterladen, ausfüllen und unterschreiben.</p></div>
+          <div class="card stack" style="gap:8px"><span class="schritt-nr">2</span><h3>Abgeben</h3><p class="muted small">Beim Trainer abgeben oder per Post an die Geschäftsstelle.</p></div>
+          <div class="card stack" style="gap:8px"><span class="schritt-nr">3</span><h3>Loslegen</h3><p class="muted small">Die Spielberechtigung beantragen wir für dich.</p></div>
+        </div>
+        <div class="hinweis">Ziel für später: Mitgliedsantrag als Online-Formular mit SEPA-Mandat. Bis dahin bleibt das PDF.</div>
+      </div>
+      <aside class="card stack" style="flex:1 1 300px;background:var(--creme)">
+        <h3>Dokumente</h3>
+        <ul class="liste">{dokumente.map((d) => <li><a href={d.href} target="_blank" rel="noopener">{d.titel}</a><span class="small muted">PDF</span></li>)}</ul>
+        <p class="small muted">Postanschrift: Ahrweiler BC 1920 e.V., Kreuzstraße 108, 53474 Bad Neuenahr-Ahrweiler</p>
+      </aside>
+    </div>
+  </section>
+</Base>

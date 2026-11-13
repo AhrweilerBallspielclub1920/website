@@ -1,0 +1,33 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHead from '../../components/PageHead.astro';
+import NewsCard from '../../components/NewsCard.astro';
+import { alleNews } from '../../lib/utils';
+const news = await alleNews();
+---
+<Base title="News" aktiv="news">
+  <PageHead titel="NEWS" text="Spielberichte, Vereinsnachrichten und Termine." />
+  <section class="section">
+    <div class="wrap stack-lg">
+      <div class="row" role="group" aria-label="Nach Bereich filtern">
+        <button class="btn btn-rot filter" data-k="alle" type="button">Alle</button>
+        <button class="btn btn-rahmen filter" data-k="Senioren" type="button">Senioren</button>
+        <button class="btn btn-rahmen filter" data-k="Jugend" type="button">Jugend</button>
+        <button class="btn btn-rahmen filter" data-k="Verein" type="button">Verein</button>
+      </div>
+      <div class="grid" id="newsliste">
+        {news.map((n) => <div data-k={n.data.kategorie}><NewsCard eintrag={n} /></div>)}
+      </div>
+    </div>
+  </section>
+  <script>
+    const btns = document.querySelectorAll<HTMLButtonElement>('.filter');
+    btns.forEach((b) => b.addEventListener('click', () => {
+      const k = b.dataset.k;
+      btns.forEach((x) => x.className = 'btn filter ' + (x === b ? 'btn-rot' : 'btn-rahmen'));
+      document.querySelectorAll<HTMLElement>('#newsliste > div').forEach((el) => {
+        el.style.display = k === 'alle' || el.dataset.k === k ? '' : 'none';
+      });
+    }));
+  </script>
+</Base>

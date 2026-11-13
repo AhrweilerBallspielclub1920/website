@@ -1,0 +1,38 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHead from '../components/PageHead.astro';
+---
+<Base title="Kontakt" aktiv="kontakt">
+  <PageHead titel="KONTAKT" text="Schreib uns – wir leiten deine Nachricht an die richtige Stelle weiter." />
+  <section class="section">
+    <div class="wrap row" style="gap:40px;align-items:flex-start">
+      <form name="kontakt" method="POST" action="/danke" data-netlify="true" netlify-honeypot="bot-field" class="stack" style="flex:2 1 520px">
+        <input type="hidden" name="form-name" value="kontakt" />
+        <p class="hidden"><label>Nicht ausfüllen: <input name="bot-field" tabindex="-1" autocomplete="off" /></label></p>
+        <div class="form-grid">
+          <div class="feld"><label for="k-name">Name</label><input id="k-name" name="name" required autocomplete="name" /></div>
+          <div class="feld"><label for="k-mail">E-Mail</label><input id="k-mail" type="email" name="email" required autocomplete="email" /></div>
+        </div>
+        <div class="feld"><label for="k-thema">Thema</label>
+          <select id="k-thema" name="thema"><option>Allgemein</option><option>Jugend</option><option>Senioren</option><option>Mitgliedschaft</option><option>Sponsoring</option><option>Vereinsheim</option><option>Presse</option></select>
+        </div>
+        <div class="feld"><label for="k-nachricht">Nachricht</label><textarea id="k-nachricht" name="nachricht" required></textarea></div>
+        <label class="check"><input type="checkbox" name="einwilligung" value="ja" required /> <span>Ich bin einverstanden, dass meine Angaben zur Beantwortung meiner Anfrage verarbeitet werden. Mehr in der <a href="/datenschutz">Datenschutzerklärung</a>.</span></label>
+        <button class="btn btn-rot" type="submit" style="align-self:flex-start">Nachricht senden</button>
+      </form>
+      <aside class="stack" style="flex:1 1 280px">
+        <div class="card stack" style="gap:4px;background:var(--creme)">
+          <h3>Ahrweiler BC 1920 e.V.</h3>
+          <span>Kreuzstraße 108</span><span>53474 Bad Neuenahr-Ahrweiler</span>
+          <a href="mailto:info@ahrweilerbc.com">info@ahrweilerbc.com</a>
+        </div>
+        <div class="card stack" style="gap:6px">
+          <h3>Direkt</h3>
+          <span class="small"><strong>Vorstand:</strong> <a href="mailto:vorstand@ahrweilerbc.com">vorstand@ahrweilerbc.com</a></span>
+          <span class="small"><strong>Jugend:</strong> <a href="mailto:talente@ahrweilerbc.com">talente@ahrweilerbc.com</a></span>
+          <span class="small"><strong>Ferienfreizeit:</strong> <a href="mailto:fff@ahrweilerbc.com">fff@ahrweilerbc.com</a></span>
+        </div>
+      </aside>
+    </div>
+  </section>
+</Base>

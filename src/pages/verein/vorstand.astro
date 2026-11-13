@@ -1,0 +1,20 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHead from '../../components/PageHead.astro';
+import vorstand from '../../data/vorstand.json';
+import { initialen } from '../../lib/utils';
+---
+<Base title="Vorstand">
+  <PageHead titel="VORSTAND" text="Die Menschen, die den Ahrweiler BC ehrenamtlich führen." crumbs={[{ href: '/verein/vorstand', label: 'Verein' }]} />
+  <section class="section">
+    <div class="wrap stack-lg">
+      <div class="bild-platzhalter" style="height:320px">Vorstandsfoto</div>
+      <div class="grid">
+        {vorstand.mitglieder.map((m) => (
+          <div class="card person"><span class="avatar" aria-hidden="true">{initialen(m.name)}</span><div class="stack" style="gap:0"><strong>{m.name}</strong><span class="small muted">{m.rolle}</span></div></div>
+        ))}
+      </div>
+      <p>Erreichbar unter <a href={`mailto:${vorstand.email}`}>{vorstand.email}</a></p>
+    </div>
+  </section>
+</Base>

@@ -1,0 +1,25 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHead from '../../components/PageHead.astro';
+const plaetze = [
+  { name: 'Apollinarisstadion (Rasen)', fakten: [['Kapazität', '4.558 Plätze'], ['Tribüne', '450 überdachte Sitzplätze'], ['Besonderheit', 'Leichtathletikanlage mit sechs Bahnen']] },
+  { name: 'Apollinarisstadion (Kunstrasen)', fakten: [['Seit', 'Oktober 2011'], ['Maße', '68 × 105 m'], ['Tribüne', 'überdacht, ca. 300 Zuschauer'], ['Flutlicht', 'ja']] },
+  { name: 'Ahrstadion', fakten: [['Eröffnet', '2. August 1925'], ['Maße', '58 × 100 m'], ['Flutlicht', 'ja'], ['Vereinsheim', '„Jahnheim“']] }
+];
+---
+<Base title="Stadion & Plätze">
+  <PageHead titel="STADION & PLÄTZE" text="Unsere Heimat: das Apollinarisstadion und das Ahrstadion in Bad Neuenahr-Ahrweiler." crumbs={[{ href: '/verein/vorstand', label: 'Verein' }]} />
+  <section class="section">
+    <div class="wrap stack-lg">
+      <div class="grid">
+        {plaetze.map((p) => (
+          <div class="card stack" style="border-top:3px solid var(--gold)">
+            <h3 class="display" style="font-size:26px">{p.name}</h3>
+            <ul class="liste">{p.fakten.map(([k, v]) => <li><strong>{k}</strong><span>{v}</span></li>)}</ul>
+          </div>
+        ))}
+      </div>
+      <div class="hinweis"><strong>Anfahrt &amp; Parken:</strong> [Adresse für Navi, Parkmöglichkeiten und Bushaltestelle ergänzen]</div>
+    </div>
+  </section>
+</Base>

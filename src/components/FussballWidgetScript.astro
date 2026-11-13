@@ -1,0 +1,36 @@
+<script>
+  const KEY = 'abc-fussballde-ok';
+  const SRC = 'https://www.fussball.de/widgets.js';
+  const ok = () => { try { return localStorage.getItem(KEY) === '1'; } catch { return false; } };
+  const remember = () => { try { localStorage.setItem(KEY, '1'); } catch {} };
+
+  function skriptLaden() {
+    // widgets.js sucht beim Laden alle .fussballde_widget-Elemente – daher erst laden, wenn alle sichtbar sind
+    document.querySelector(`script[src="${SRC}"]`)?.remove();
+    const s = document.createElement('script');
+    s.src = SRC;
+    s.async = true;
+    document.head.appendChild(s);
+  }
+
+  function freigeben(boxes: HTMLElement[]) {
+    boxes.forEach((box) => {
+      box.querySelector('.fb-consent')?.remove();
+      box.querySelector<HTMLElement>('.fb-target')?.removeAttribute('hidden');
+      box.dataset.loaded = '1';
+    });
+    skriptLaden();
+  }
+
+  const alle = [...document.querySelectorAll<HTMLElement>('[data-fb-widget]')];
+  if (alle.length) {
+    if (ok()) freigeben(alle);
+    else alle.forEach((box) => box.querySelector('[data-fb-load]')?.addEventListener('click', () => {
+      const merken = box.querySelector<HTMLInputElement>('[data-fb-remember]')?.checked;
+      if (merken) remember();
+      // Bereits freigegebene Widgets mitnehmen, damit widgets.js alle findet
+      const ziel = merken ? alle : alle.filter((b) => b === box || b.dataset.loaded);
+      freigeben(ziel);
+    }));
+  }
+</script>

@@ -1,0 +1,22 @@
+{
+  "name": "ahrweilerbc-website",
+  "type": "module",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "prebuild": "node scripts/copy-cms.mjs",
+    "predev": "node scripts/copy-cms.mjs"
+  },
+  "dependencies": {
+    "@fontsource/barlow-condensed": "^5.3.0",
+    "@fontsource/inter": "^5.2.0",
+    "@sveltia/cms": "^0.265.1",
+    "astro": "^7.4.11"
+  },
+  "engines": {
+    "node": ">=22.23.4"
+  }
+}

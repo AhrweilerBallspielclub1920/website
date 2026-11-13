@@ -1,0 +1,26 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHead from '../../components/PageHead.astro';
+import { getCollection } from 'astro:content';
+const gruppen = (await getCollection('gruppen')).sort((a, b) => a.data.reihenfolge - b.data.reihenfolge);
+const teams = await getCollection('teams');
+const anzahl = (id: string) => teams.filter((t) => t.data.gruppe === id).length;
+---
+<Base title="Mannschaften">
+  <PageHead titel="MANNSCHAFTEN" text="Alle Teams des Ahrweiler BC – mit Trainern, Trainingszeiten und Kontakt." />
+  {['Senioren', 'Jugend'].map((b) => (
+    <section class={b === 'Jugend' ? 'section section-creme' : 'section'}>
+      <div class="wrap stack-lg">
+        <h2>{b}</h2>
+        <div class="grid">
+          {gruppen.filter((g) => g.data.bereich === b).map((g) => (
+            <a href={`/mannschaften/${g.id}`} class="card card-link" style="border-top:3px solid var(--gold)">
+              <h3 class="display" style="font-size:30px;font-weight:800">{g.data.name}</h3>
+              <span class="muted small">{g.data.alter ?? ''}{g.data.alter ? ' · ' : ''}{anzahl(g.id)} {anzahl(g.id) === 1 ? 'Team' : 'Teams'}</span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  ))}
+</Base>

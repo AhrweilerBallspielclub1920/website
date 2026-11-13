@@ -1,0 +1,35 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHead from '../../components/PageHead.astro';
+---
+<Base title="ABC-Fußballschule">
+  <PageHead titel="ABC-FUSSBALLSCHULE" text="„Fußball macht Spaß“ – zusätzliches Training für die F- und E-Jugend." crumbs={[{ href: '/jugend', label: 'Jugend' }]} />
+  <section class="section">
+    <div class="wrap row" style="gap:40px;align-items:flex-start">
+      <div class="prose" style="flex:2 1 520px">
+        <p class="lead">Die ABC-Fußballschule verbindet sportliche Förderung mit Teamgeist, Respekt, Toleranz und Freude am Sport.</p>
+        <h2>Inhalte</h2>
+        <ul>
+          <li>Vielseitige Bewegung und Laufschule</li>
+          <li>Ballaufgaben und Spiele</li>
+          <li>Spielerisches Erlernen der Basistechniken</li>
+          <li>Fußball in kleinen Teams</li>
+          <li>Wechselnde Schwerpunkte – gegen Einseitigkeit, für dauerhafte Motivation</li>
+        </ul>
+        <p>Trainiert wird nach den Empfehlungen des DFB, mit klaren Regeln und viel Raum zum Spielen. Lizenzierte Trainer leiten die Einheiten, eigene Nachwuchsspieler helfen als Trainerassistenten mit.</p>
+      </div>
+      <aside class="stack" style="flex:1 1 280px">
+        <div class="card" style="background:var(--creme)">
+          <ul class="liste">
+            <li><strong>Für</strong><span>F- und E-Jugend</span></li>
+            <li><strong>Gruppen</strong><span>bis zu 70 Kinder, in Kleingruppen</span></li>
+            <li><strong>Ort</strong><span>Apollinarisstadion</span></li>
+            <li><strong>Termine</strong><span>[folgen]</span></li>
+            <li><strong>Kosten</strong><span>[folgen]</span></li>
+          </ul>
+        </div>
+        <a class="btn btn-rot" href="mailto:talente@ahrweilerbc.com">Anfragen</a>
+      </aside>
+    </div>
+  </section>
+</Base>

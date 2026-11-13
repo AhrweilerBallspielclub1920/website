@@ -1,0 +1,25 @@
+# Alte WordPress-Adressen → neue Seiten (301 = dauerhaft, hält Google-Rankings)
+/nachwuchs/a-junioren/*          /mannschaften/a-junioren          301
+/nachwuchs/b-junioren/*          /mannschaften/b-junioren          301
+/nachwuchs/c-junioren/*          /mannschaften/c-junioren          301
+/nachwuchs/d-junioren/*          /mannschaften/d-junioren          301
+/nachwuchs/e-junioren/*          /mannschaften/e-junioren          301
+/nachwuchs/f-junioren/*          /mannschaften/f-junioren          301
+/nachwuchs/bambinis/*            /mannschaften/bambini             301
+/1-mannschaft/*                  /mannschaften/1-mannschaft        301
+/2-mannschaft/*                  /mannschaften/u23                 301
+/alte-herren/*                   /mannschaften/alte-herren         301
+/vorstand/*                      /verein/vorstand                  301
+/club/geschichte/*               /verein/geschichte                301
+/club/stadion/*                  /verein/stadion                   301
+/club/schiedsrichter/*           /verein/schiedsrichter            301
+/abc-fussballschule/*            /jugend/fussballschule            301
+/talentsuche-foerderung/*        /jugend/probetraining             301
+/ferienfreizeit/*                /jugend/ferienfreizeit            301
+/vereinsheim-belegungsplan/*     /verein/vereinsheim               301
+/cart/*                          /                                 301
+/checkout/*                      /                                 301
+/author/*                        /news                             301
+# Alte News-URLs: /2026/11/11/titel/ → /news/titel
+/:year/:month/:day/:slug/        /news/:slug                       301
+/:year/:month/:day/:slug         /news/:slug                       301

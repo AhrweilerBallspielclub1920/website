@@ -1,0 +1,33 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHead from '../../components/PageHead.astro';
+---
+<Base title="Fußball-Ferienfreizeit">
+  <PageHead titel="FUSSBALL-FERIENFREIZEIT" text="„Spaß und Fußball pur“ – vier Tage Training, Spiele und Turniere im Apollinarisstadion." crumbs={[{ href: '/jugend', label: 'Jugend' }]} />
+  <section class="section">
+    <div class="wrap row" style="gap:40px;align-items:flex-start">
+      <div class="prose" style="flex:2 1 520px">
+        <p class="lead">Die Fiege-Fußball-Ferienfreizeit für Mädchen und Jungen – mit lizenzierten Trainern, Turnieren, Mittagessen und eigenem Trikot.</p>
+        <div class="hinweis"><strong>Termine 2027 folgen.</strong> 2026 fand die Freizeit in den Oster- und Sommerferien statt.</div>
+        <h2>Leistungen</h2>
+        <ul>
+          <li>Tägliches Training mit lizenzierten Trainern</li>
+          <li>Spiele und Turniere</li>
+          <li>Mittagessen</li>
+          <li>Personalisiertes Fußballtrikot</li>
+        </ul>
+      </div>
+      <aside class="stack" style="flex:1 1 280px">
+        <div class="card" style="background:var(--creme)">
+          <ul class="liste">
+            <li><strong>Jahrgänge</strong><span>[2027 anpassen]</span></li>
+            <li><strong>Betreuung</strong><span>9:30–15:30 Uhr</span></li>
+            <li><strong>Früh/Spät</strong><span>8:30–16:30 Uhr (+40 €)</span></li>
+            <li><strong>Preis 2026</strong><span>139 €</span></li>
+          </ul>
+        </div>
+        <a class="btn btn-rot" href="mailto:fff@ahrweilerbc.com">fff@ahrweilerbc.com</a>
+      </aside>
+    </div>
+  </section>
+</Base>

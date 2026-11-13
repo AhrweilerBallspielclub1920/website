@@ -1,0 +1,32 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHead from '../../components/PageHead.astro';
+import NewsCard from '../../components/NewsCard.astro';
+import { render } from 'astro:content';
+import { alleNews, datum } from '../../lib/utils';
+
+export async function getStaticPaths() {
+  const news = await alleNews();
+  return news.map((n) => ({ params: { slug: n.id }, props: { eintrag: n, weitere: news.filter((x) => x.id !== n.id).slice(0, 3) } }));
+}
+const { eintrag, weitere } = Astro.props;
+const { Content } = await render(eintrag);
+const d = eintrag.data;
+---
+<Base title={d.title} description={d.teaser} aktiv="news">
+  <PageHead titel={d.title} crumbs={[{ href: '/news', label: 'News' }]}>
+    <p class="small" style="font-size:15px">{d.team ?? d.kategorie} · {datum(d.date, { day: '2-digit', month: 'long', year: 'numeric' })} · {d.autor}</p>
+  </PageHead>
+  <section class="section">
+    <div class="wrap stack-lg">
+      {d.bild && <img src={d.bild} alt="" style="border-radius:12px;max-height:520px;object-fit:cover;width:100%" />}
+      <article class="prose"><Content /></article>
+    </div>
+  </section>
+  <section class="section section-creme">
+    <div class="wrap stack-lg">
+      <h2>Weitere News</h2>
+      <div class="grid">{weitere.map((n) => <NewsCard eintrag={n} />)}</div>
+    </div>
+  </section>
+</Base>

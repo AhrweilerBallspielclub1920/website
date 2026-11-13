@@ -1,0 +1,54 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHead from '../../components/PageHead.astro';
+import { getCollection } from 'astro:content';
+const jugend = (await getCollection('gruppen')).filter((g) => g.data.bereich === 'Jugend').sort((a, b) => a.data.reihenfolge - b.data.reihenfolge);
+---
+<Base title="Jugend">
+  <PageHead titel="UNSERE JUGEND" text="Rund 25 Teams von den Bambini bis zur A-Jugend – ausgebildet nach einer gemeinsamen Spielphilosophie." />
+  <section class="section">
+    <div class="wrap row" style="gap:40px;align-items:flex-start">
+      <div class="stack" style="flex:1 1 420px">
+        <span class="eyebrow">Ausbildungskonzept</span>
+        <h2>So bilden wir aus</h2>
+        <p class="muted">Unsere Trainerinnen und Trainer arbeiten nach einem gemeinsamen Konzept. Jede Altersstufe baut auf der vorherigen auf – damit jeder Spieler eine klare Perspektive im Verein hat.</p>
+        <p class="muted"><em>[Hier eine Zusammenfassung des Ausbildungskonzepts einfügen.]</em></p>
+      </div>
+      <div style="flex:1 1 480px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px">
+        <div class="card" style="border-top:3px solid var(--gold)"><h3 class="display" style="font-size:26px">Perspektive</h3><p class="small muted">Jeder Spieler weiß, wo er steht und wohin der Weg im Verein führt.</p></div>
+        <div class="card" style="border-top:3px solid var(--gold)"><h3 class="display" style="font-size:26px">Spielnahe Ausbildung</h3><p class="small muted">Trainiert wird, was im Spiel passiert – in homogenen Gruppen.</p></div>
+        <div class="card" style="border-top:3px solid var(--gold)"><h3 class="display" style="font-size:26px">Spielphilosophie</h3><p class="small muted">Eine gemeinsame Idee und Sprache von der F- bis zur A-Jugend.</p></div>
+        <div class="card" style="border-top:3px solid var(--gold)"><h3 class="display" style="font-size:26px">Intensität</h3><p class="small muted">Hohe Intensität als Entwicklungsbeschleuniger.</p></div>
+      </div>
+    </div>
+  </section>
+  <section class="section section-dunkel">
+    <div class="wrap stack-lg">
+      <h2>Altersklassen</h2>
+      <div class="grid-sm">
+        {jugend.map((g) => <a class="team-kachel" href={`/mannschaften/${g.id}`}><strong>{g.data.name}</strong><span>{g.data.alter}</span></a>)}
+      </div>
+    </div>
+  </section>
+  <section class="section">
+    <div class="wrap grid">
+      <a href="/jugend/probetraining" class="card card-link"><span class="eyebrow">Mitmachen</span><h3>Probetraining</h3><p class="muted small">Online anfragen – das passende Trainerteam meldet sich.</p></a>
+      <a href="/jugend/fussballschule" class="card card-link"><span class="eyebrow">F- und E-Jugend</span><h3>ABC-Fußballschule</h3><p class="muted small">Zusätzliches Training in kleinen Gruppen nach DFB-Empfehlungen.</p></a>
+      <a href="/jugend/ferienfreizeit" class="card card-link"><span class="eyebrow">Ferien</span><h3>Fußball-Ferienfreizeit</h3><p class="muted small">Vier Tage Training, Spiele und Turniere im Apollinarisstadion.</p></a>
+    </div>
+  </section>
+  <section class="section section-creme" id="kinderschutz">
+    <div class="wrap stack-lg">
+      <div class="stack" style="gap:8px">
+        <span class="eyebrow">Kinderschutz</span>
+        <h2>Ansprechpersonen</h2>
+        <p class="lead">Kinder und Jugendliche sollen sich bei uns sicher fühlen. Bei Sorgen oder Fragen kannst du dich jederzeit vertraulich melden.</p>
+      </div>
+      <div class="grid">
+        <div class="card stack" style="gap:4px"><span class="eyebrow">Im Verein</span><strong>Thomas Lorenz</strong><span class="small muted">Jugendleiter</span><a href="mailto:thomas.lorenz@ahrweilerbc.com">thomas.lorenz@ahrweilerbc.com</a></div>
+        <div class="card stack" style="gap:4px"><span class="eyebrow">Verband</span><strong>Arianit Besiri</strong><a href="tel:+4916090206105">0160 90206105</a></div>
+        <div class="card stack" style="gap:4px"><span class="eyebrow">Extern</span><strong>Kinderschutzdienst Rheinland-Pfalz</strong><a href="tel:+4926138899">0261 38899</a></div>
+      </div>
+    </div>
+  </section>
+</Base>

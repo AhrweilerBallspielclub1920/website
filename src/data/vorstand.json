@@ -1,0 +1,10 @@
+{
+  "email": "vorstand@ahrweilerbc.com",
+  "mitglieder": [
+    { "name": "Gerd Treffer", "rolle": "Präsident" },
+    { "name": "Jens Heckenbach", "rolle": "Vize-Präsident & Finanzen" },
+    { "name": "Michael Lorca", "rolle": "Geschäftsführer & Abteilungsleiter Senioren" },
+    { "name": "Sarah Preußner", "rolle": "Sponsoring & Kommunikation" },
+    { "name": "Thomas Lorenz", "rolle": "Jugendleiter" }
+  ]
+}

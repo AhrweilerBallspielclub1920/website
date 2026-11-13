@@ -1,0 +1,18 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHead from '../../components/PageHead.astro';
+const sr = ['Markus Jüris', 'Julian Pelikan', 'Fabian Schneider', 'Jannis Weintschke'];
+---
+<Base title="Schiedsrichter">
+  <PageHead titel="SCHIEDSRICHTER" text="Ohne sie kein Spiel – unsere Schiedsrichter pfeifen für den ABC." crumbs={[{ href: '/verein/vorstand', label: 'Verein' }]} />
+  <section class="section">
+    <div class="wrap stack-lg">
+      <div class="grid">{sr.map((n) => <div class="card"><strong>{n}</strong></div>)}</div>
+      <div class="box-rot" style="max-width:720px">
+        <h3>Schiedsrichter werden?</h3>
+        <p>Wir freuen uns über jeden, der Lust hat, Spiele zu leiten. Melde dich bei uns – wir helfen beim Einstieg.</p>
+        <a class="btn btn-hell" style="align-self:flex-start" href="mailto:info@ahrweilerbc.com">info@ahrweilerbc.com</a>
+      </div>
+    </div>
+  </section>
+</Base>

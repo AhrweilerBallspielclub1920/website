@@ -1,0 +1,12 @@
+[
+  { "id": "1-mannschaft", "name": "1. Mannschaft", "bereich": "Senioren", "reihenfolge": 1 },
+  { "id": "u23", "name": "U23", "bereich": "Senioren", "reihenfolge": 2 },
+  { "id": "alte-herren", "name": "Alte Herren", "bereich": "Senioren", "reihenfolge": 3 },
+  { "id": "a-junioren", "name": "A-Junioren", "bereich": "Jugend", "alter": "U19 / U18", "reihenfolge": 10 },
+  { "id": "b-junioren", "name": "B-Junioren", "bereich": "Jugend", "alter": "U17 / U16", "reihenfolge": 11 },
+  { "id": "c-junioren", "name": "C-Junioren", "bereich": "Jugend", "alter": "U15 / U14", "reihenfolge": 12 },
+  { "id": "d-junioren", "name": "D-Junioren", "bereich": "Jugend", "alter": "U13 / U12", "reihenfolge": 13 },
+  { "id": "e-junioren", "name": "E-Junioren", "bereich": "Jugend", "alter": "U11 / U10", "reihenfolge": 14 },
+  { "id": "f-junioren", "name": "F-Junioren", "bereich": "Jugend", "alter": "U9 / U8", "reihenfolge": 15 },
+  { "id": "bambini", "name": "Bambini", "bereich": "Jugend", "alter": "U7 und jünger", "reihenfolge": 16 }
+]

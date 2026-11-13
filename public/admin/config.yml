@@ -1,0 +1,161 @@
+# Redaktionsbereich des Ahrweiler BC – erreichbar unter /admin
+# Login über GitHub. Vor dem ersten Login: Repository-Namen unten eintragen
+# und in Netlify unter "Access control > OAuth" einen GitHub-Provider anlegen (siehe README).
+backend:
+  name: github
+  repo: AHRWEILERBC/website   # <- an das echte GitHub-Repository anpassen
+  branch: main
+
+site_url: https://ahrweilerbc.com
+logo:
+  src: /wappen-192.png
+
+# Fotos beim Hochladen automatisch verkleinern und als WebP speichern
+media_libraries:
+  default:
+    config:
+      max_file_size: 15000000
+      slugify_filename: true
+      transformations:
+        raster_image:
+          format: webp
+          quality: 82
+          width: 1920
+          height: 1920
+
+media_folder: public/uploads
+public_folder: /uploads
+
+slug:
+  encoding: ascii
+  clean_accents: true
+
+collections:
+  - name: news
+    label: News
+    label_singular: Beitrag
+    folder: src/content/news
+    create: true
+    slug: "{{slug}}"
+    sortable_fields: [date, title]
+    summary: "{{date | date('DD.MM.YYYY')}} – {{title}}"
+    fields:
+      - { name: title, label: Titel, widget: string }
+      - { name: date, label: Datum, widget: datetime, time_format: false, date_format: DD.MM.YYYY, format: YYYY-MM-DD }
+      - { name: kategorie, label: Bereich, widget: select, options: [Senioren, Jugend, Verein] }
+      - { name: team, label: "Team (z. B. D1, U23, 1. Mannschaft) – erscheint dann auf der Teamseite", widget: string, required: false }
+      - { name: teaser, label: Kurztext für die Vorschau, widget: text }
+      - { name: bild, label: Titelbild, widget: image, required: false }
+      - { name: angepinnt, label: Oben auf jeder Seite anzeigen, widget: boolean, default: false }
+      - { name: entwurf, label: Entwurf (noch nicht veröffentlichen), widget: boolean, default: false }
+      - { name: autor, label: Autor, widget: string, default: Thomas Lorenz }
+      - { name: body, label: Text, widget: markdown }
+
+  - name: teams
+    label: Mannschaften
+    label_singular: Mannschaft
+    folder: src/content/teams
+    create: true
+    slug: "{{name}}"
+    summary: "{{gruppe}} · {{name}}"
+    sortable_fields: [gruppe, name]
+    fields:
+      - { name: name, label: Teamname, widget: string }
+      - name: gruppe
+        label: Erscheint auf Seite
+        widget: select
+        options:
+          - { label: 1. Mannschaft, value: 1-mannschaft }
+          - { label: U23, value: u23 }
+          - { label: Alte Herren, value: alte-herren }
+          - { label: A-Junioren, value: a-junioren }
+          - { label: B-Junioren, value: b-junioren }
+          - { label: C-Junioren, value: c-junioren }
+          - { label: D-Junioren, value: d-junioren }
+          - { label: E-Junioren, value: e-junioren }
+          - { label: F-Junioren, value: f-junioren }
+          - { label: Bambini, value: bambini }
+      - { name: reihenfolge, label: Reihenfolge auf der Seite, widget: number, value_type: int, default: 1 }
+      - { name: liga, label: Liga, widget: string, required: false }
+      - { name: jahrgang, label: Jahrgang, widget: string, required: false }
+      - { name: bild, label: Mannschaftsfoto, widget: image, required: false, hint: "Nur mit Einverständnis der Eltern veröffentlichen." }
+      - name: trainer
+        label: Trainerteam
+        widget: list
+        required: false
+        fields:
+          - { name: name, label: Name, widget: string }
+          - { name: rolle, label: Rolle, widget: string, default: Trainer }
+      - name: training
+        label: Trainingszeiten
+        widget: list
+        required: false
+        fields:
+          - { name: tag, label: Tag, widget: select, options: [Montag, Dienstag, Mittwoch, Donnerstag, Freitag, Samstag, Sonntag] }
+          - { name: zeit, label: Uhrzeit, widget: string, required: false, hint: "z. B. 17:00–18:30" }
+      - { name: ort, label: Trainingsort, widget: string, required: false }
+      - { name: kontakt, label: "Kontakt-E-Mail (nur Vereinsadressen @ahrweilerbc.com)", widget: string, required: false }
+      - { name: fussballde, label: Link zur Teamseite auf fussball.de, widget: string, required: false }
+      - name: widgets
+        label: fussball.de-Widgets
+        label_singular: Widget
+        widget: list
+        required: false
+        hint: "Auf next.fussball.de/widgets ein Widget für diese Mannschaft anlegen, „Code anzeigen“ und aus dem <div> nur data-id und data-type übernehmen."
+        summary: "{{typ}} – {{id}}"
+        fields:
+          - name: typ
+            label: "Typ (data-type)"
+            widget: select
+            options:
+              - { label: Tabelle, value: table }
+              - { label: Nächstes Spiel, value: next-match }
+              - { label: Spielplan, value: matches }
+              - { label: Spielplan Mannschaft, value: team-matches }
+          - { name: id, label: "Widget-ID (data-id)", widget: string, pattern: ['^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$', "Bitte die 36-stellige ID aus data-id einfügen"] }
+      - { name: body, label: Beschreibung, widget: markdown, required: false }
+
+  - name: daten
+    label: Vereinsdaten
+    files:
+      - name: spiele
+        label: Nächste Spiele (Startseite)
+        file: src/data/spiele.json
+        fields:
+          - name: spiele
+            label: Spiele
+            widget: list
+            root: true
+            summary: "{{datum}} {{uhrzeit}} – {{team}} vs. {{gegner}}"
+            fields:
+              - { name: id, label: "Kennung (z. B. 2026-11-15-u23)", widget: string }
+              - { name: datum, label: Datum, widget: datetime, time_format: false, format: YYYY-MM-DD, date_format: DD.MM.YYYY }
+              - { name: uhrzeit, label: Uhrzeit, widget: string, hint: "z. B. 15:30" }
+              - { name: team, label: Team, widget: string }
+              - { name: gegner, label: Gegner, widget: string }
+              - { name: heim, label: Heimspiel, widget: boolean, default: true }
+              - { name: platz, label: Platz, widget: string, required: false }
+      - name: vorstand
+        label: Vorstand
+        file: src/data/vorstand.json
+        fields:
+          - { name: email, label: E-Mail, widget: string }
+          - name: mitglieder
+            label: Mitglieder
+            widget: list
+            fields:
+              - { name: name, label: Name, widget: string }
+              - { name: rolle, label: Funktion, widget: string }
+      - name: sponsoren
+        label: Sponsoren
+        file: src/data/sponsoren.json
+        fields:
+          - { name: hinweis, label: Interne Notiz, widget: string, required: false }
+          - name: partner
+            label: Partner
+            widget: list
+            required: false
+            fields:
+              - { name: name, label: Name, widget: string }
+              - { name: url, label: Webseite, widget: string, required: false }
+              - { name: logo, label: Logo, widget: image, required: false }

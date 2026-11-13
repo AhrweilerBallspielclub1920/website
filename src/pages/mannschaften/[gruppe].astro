@@ -1,0 +1,106 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHead from '../../components/PageHead.astro';
+import NewsCard from '../../components/NewsCard.astro';
+import FussballWidget from '../../components/FussballWidget.astro';
+import FussballWidgetScript from '../../components/FussballWidgetScript.astro';
+import { getCollection } from 'astro:content';
+import { alleNews, initialen } from '../../lib/utils';
+
+export async function getStaticPaths() {
+  const gruppen = await getCollection('gruppen');
+  const teams = await getCollection('teams');
+  return gruppen.map((g) => ({
+    params: { gruppe: g.id },
+    props: { gruppe: g, teams: teams.filter((t) => t.data.gruppe === g.id).sort((a, b) => a.data.reihenfolge - b.data.reihenfolge) }
+  }));
+}
+const { gruppe, teams } = Astro.props;
+const g = gruppe.data;
+const jugend = g.bereich === 'Jugend';
+const news = await alleNews();
+const berichteFuer = (name: string) => news.filter((n) => n.data.team === name).slice(0, 3);
+---
+<Base title={g.name}>
+  <PageHead titel={g.name.toUpperCase()} text={[g.alter, 'Saison 2026/27'].filter(Boolean).join(' · ')} crumbs={[{ href: '/mannschaften', label: 'Mannschaften' }]}>
+    {teams.length > 1 && (
+      <nav class="tabs" aria-label="Teams auf dieser Seite">
+        {teams.map((t) => <a href={`#${t.id}`}>{t.data.name}</a>)}
+      </nav>
+    )}
+  </PageHead>
+  <div class="wrap">
+    {teams.map((t) => {
+      const d = t.data;
+      const berichte = berichteFuer(d.name);
+      const kontakt = d.kontakt ?? (jugend ? 'talente@ahrweilerbc.com' : 'info@ahrweilerbc.com');
+      return (
+        <section class="team" id={t.id} aria-labelledby={`h-${t.id}`}>
+          <div class="team-main">
+            {d.bild
+              ? <img src={d.bild} alt={`Mannschaftsfoto ${d.name}`} style="border-radius:12px;width:100%;max-height:420px;object-fit:cover" />
+              : <div class="bild-platzhalter" style="height:300px">Mannschaftsfoto {d.name} folgt</div>}
+            <div class="stack" style="gap:8px">
+              <h2 id={`h-${t.id}`}>{d.name}</h2>
+              <div class="row" style="gap:8px">
+                {d.liga && <span class="chip">{d.liga}</span>}
+                {d.jahrgang && <span class="chip chip-gold">Jahrgang {d.jahrgang}</span>}
+              </div>
+            </div>
+            {d.trainer.length > 0 && (
+              <div class="stack">
+                <h3>Trainerteam</h3>
+                <div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px">
+                  {d.trainer.map((p) => (
+                    <div class="card person" style="padding:14px">
+                      <span class="avatar" aria-hidden="true">{initialen(p.name)}</span>
+                      <div class="stack" style="gap:0"><strong>{p.name}</strong><span class="small muted">{p.rolle}</span></div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+            {berichte.length > 0 && (
+              <div class="stack">
+                <h3>Letzte Berichte</h3>
+                <div class="grid">{berichte.map((n) => <NewsCard eintrag={n} />)}</div>
+              </div>
+            )}
+            {(d.fussballde || d.widgets.length > 0) && (
+              <div class="stack">
+                <h3>Tabelle &amp; Spielplan</h3>
+                {d.widgets.map((w) => <FussballWidget typ={w.typ} id={w.id} />)}
+                {d.fussballde && (
+                  <a class="btn btn-rahmen" style="align-self:flex-start;color:var(--text)" href={d.fussballde} target="_blank" rel="noopener">{d.name} auf fussball.de →</a>
+                )}
+              </div>
+            )}
+          </div>
+          <aside class="team-side">
+            <div class="card" style="background:var(--creme)">
+              <h3 style="margin-bottom:8px">Training</h3>
+              {d.training.length > 0 ? (
+                <ul class="liste">
+                  {d.training.map((tr) => <li><strong>{tr.tag}</strong><span>{tr.zeit ?? ''}</span></li>)}
+                </ul>
+              ) : <p class="muted small">Trainingszeiten folgen.</p>}
+              {d.ort && <p class="small muted" style="margin-top:10px">Ort: {d.ort}</p>}
+            </div>
+            {jugend && (
+              <div class="box-rot">
+                <h3>Mitspielen?</h3>
+                <p style="font-size:15px">Komm zum Probetraining – das Trainerteam meldet sich bei dir.</p>
+                <a class="btn btn-hell" href={`/jugend/probetraining?team=${encodeURIComponent(d.name)}`}>Probetraining anfragen</a>
+              </div>
+            )}
+            <div class="card stack" style="gap:6px">
+              <h3>Kontakt</h3>
+              <a href={`mailto:${kontakt}`}>{kontakt}</a>
+            </div>
+          </aside>
+        </section>
+      );
+    })}
+  </div>
+  <FussballWidgetScript />
+</Base>

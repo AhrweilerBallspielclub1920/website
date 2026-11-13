@@ -1,0 +1,14 @@
+---
+import { datum } from '../lib/utils';
+interface Props { eintrag: any; gross?: boolean }
+const { eintrag, gross = false } = Astro.props;
+const d = eintrag.data;
+---
+<a href={`/news/${eintrag.id}`} class="card card-link" style={gross ? 'padding:0;border:0' : ''}>
+  {d.bild
+    ? <img src={d.bild} alt="" loading="lazy" style={`border-radius:10px;object-fit:cover;width:100%;height:${gross ? 340 : 160}px`} />
+    : <div class="bild-platzhalter" style={`height:${gross ? 340 : 160}px`} aria-hidden="true">Foto folgt</div>}
+  <span class="eyebrow">{d.team ?? d.kategorie} · {datum(d.date)}</span>
+  <h3 style={gross ? 'font-family:var(--display);font-size:34px;font-weight:700' : ''}>{d.title}</h3>
+  <p class="muted small">{d.teaser}</p>
+</a>

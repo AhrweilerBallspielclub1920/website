@@ -1,0 +1,31 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHead from '../../components/PageHead.astro';
+const chronik = [
+  ['1920', 'Gründung als Fussballverein Ahrweiler 1920. Das erste Spiel am 14. Februar endet 6:6.'],
+  ['1925', 'Umbenennung in Ahrweiler Ballspiel Club. Am 2. August wird das Ahrstadion eröffnet.'],
+  ['1945', 'Erstes Spiel nach dem Krieg gegen eine französische Militärmannschaft (3:3).'],
+  ['1946', 'Fusion mit dem TuS Ahrweiler zur Rasensport-Vereinigung 98 – auf Wunsch der Besatzungsmacht.'],
+  ['1949', 'Der ABC ist wieder eigenständig und steigt in die Bezirksklasse auf.'],
+  ['1953', 'Aufstieg in die 2. Amateurliga, damals die dritthöchste Spielklasse.'],
+  ['1967', 'Erstes Pfingstturnier beim ABC.'],
+  ['1970', 'Zum 50-jährigen Jubiläum kommt der Deutsche Meister Borussia Mönchengladbach.'],
+  ['1972', 'Aufstieg in die Rheinlandliga.'],
+  ['1978', 'Aufstieg in die neu geschaffene Verbandsliga.'],
+  ['2003', 'Die Landesliga wird abgeschafft – der ABC spielt in der Bezirksliga.'],
+  ['2013', 'Die Spielgemeinschaft mit dem SC Bad Neuenahr endet.']
+];
+---
+<Base title="Geschichte">
+  <PageHead titel="GESCHICHTE" text="Über 100 Jahre Fußball in Ahrweiler." crumbs={[{ href: '/verein/vorstand', label: 'Verein' }]} />
+  <section class="section">
+    <div class="wrap" style="max-width:900px">
+      <ol class="liste" style="list-style:none">
+        {chronik.map(([j, t]) => (
+          <li style="justify-content:flex-start;gap:24px;padding:18px 0"><span class="display" style="font-size:32px;font-weight:800;color:var(--gold-text);flex:0 0 80px">{j}</span><span>{t}</span></li>
+        ))}
+      </ol>
+      <p class="muted" style="margin-top:24px">Bekanntester Spieler des Vereins: Adalbert Fuhrmann, der später auch für Borussia Mönchengladbach spielte.</p>
+    </div>
+  </section>
+</Base>

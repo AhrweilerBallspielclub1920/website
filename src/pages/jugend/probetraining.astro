@@ -1,0 +1,63 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHead from '../../components/PageHead.astro';
+import { getCollection } from 'astro:content';
+const teams = (await getCollection('teams')).filter((t) => !['1-mannschaft', 'u23', 'alte-herren'].includes(t.data.gruppe));
+const gruppen = (await getCollection('gruppen')).filter((g) => g.data.bereich === 'Jugend').sort((a, b) => a.data.reihenfolge - b.data.reihenfolge);
+---
+<Base title="Probetraining">
+  <PageHead titel="PROBETRAINING" text="Du willst beim ABC mitspielen? Schick uns ein paar Infos – das zuständige Trainerteam meldet sich." crumbs={[{ href: '/jugend', label: 'Jugend' }]} />
+  <section class="section">
+    <div class="wrap row" style="gap:40px;align-items:flex-start">
+      <form name="probetraining" method="POST" action="/danke" data-netlify="true" netlify-honeypot="bot-field" class="stack" style="flex:2 1 560px">
+        <input type="hidden" name="form-name" value="probetraining" />
+        <input type="hidden" name="subject" value="Probetraining-Anfrage" />
+        <p class="hidden"><label>Nicht ausfüllen: <input name="bot-field" tabindex="-1" autocomplete="off" /></label></p>
+        <h2 style="font-size:30px">Angaben zum Kind</h2>
+        <div class="form-grid">
+          <div class="feld"><label for="vorname">Vorname</label><input id="vorname" name="vorname" required autocomplete="off" /></div>
+          <div class="feld"><label for="jahrgang">Geburtsjahr</label><input id="jahrgang" name="jahrgang" inputmode="numeric" pattern="(19|20)[0-9]{2}" placeholder="z. B. 2015" required /></div>
+          <div class="feld"><label for="team">Altersklasse / Team</label>
+            <select id="team" name="team">
+              <option value="">Weiß ich nicht</option>
+              {gruppen.map((g) => (
+                <optgroup label={g.data.name}>
+                  {teams.filter((t) => t.data.gruppe === g.id).sort((a, b) => a.data.reihenfolge - b.data.reihenfolge).map((t) => <option value={t.data.name}>{t.data.name}</option>)}
+                </optgroup>
+              ))}
+            </select>
+          </div>
+          <div class="feld"><label for="verein">Bisheriger Verein (optional)</label><input id="verein" name="verein" /></div>
+          <div class="feld"><label for="position">Position (optional)</label>
+            <select id="position" name="position"><option value="">–</option><option>Tor</option><option>Abwehr</option><option>Mittelfeld</option><option>Sturm</option></select>
+          </div>
+        </div>
+        <h2 style="font-size:30px;margin-top:16px">Kontakt der Eltern</h2>
+        <div class="form-grid">
+          <div class="feld"><label for="eltern">Name</label><input id="eltern" name="name" required autocomplete="name" /></div>
+          <div class="feld"><label for="email">E-Mail</label><input id="email" type="email" name="email" required autocomplete="email" /></div>
+          <div class="feld"><label for="tel">Telefon (optional)</label><input id="tel" type="tel" name="telefon" autocomplete="tel" /></div>
+        </div>
+        <div class="feld"><label for="nachricht">Nachricht (optional)</label><textarea id="nachricht" name="nachricht"></textarea></div>
+        <label class="check"><input type="checkbox" name="einwilligung" value="ja" required /> <span>Ich bin damit einverstanden, dass der Ahrweiler BC diese Angaben zur Organisation des Probetrainings verarbeitet. Die Daten werden nach Abschluss gelöscht. Mehr in der <a href="/datenschutz">Datenschutzerklärung</a>.</span></label>
+        <button class="btn btn-rot" type="submit" style="align-self:flex-start">Anfrage senden</button>
+      </form>
+      <aside class="stack" style="flex:1 1 280px">
+        <div class="card stack" style="background:var(--creme)">
+          <h3>So läuft's ab</h3>
+          <ol style="margin:0;padding-left:20px;display:flex;flex-direction:column;gap:6px" class="muted">
+            <li>Formular absenden</li>
+            <li>Das Trainerteam meldet sich per E-Mail</li>
+            <li>Termin vereinbaren und mittrainieren</li>
+          </ol>
+        </div>
+        <div class="card stack" style="gap:6px"><h3>Lieber per Mail?</h3><a href="mailto:talente@ahrweilerbc.com">talente@ahrweilerbc.com</a></div>
+      </aside>
+    </div>
+  </section>
+  <script>
+    const t = new URLSearchParams(location.search).get('team');
+    const sel = document.getElementById('team') as HTMLSelectElement | null;
+    if (t && sel) sel.value = t;
+  </script>
+</Base>

@@ -1,0 +1,6 @@
+# VORSCHAU – beim Go-live ersetzen durch:
+# User-agent: *
+# Allow: /
+# Sitemap: https://ahrweilerbc.com/sitemap.xml
+User-agent: *
+Disallow: /

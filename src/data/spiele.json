@@ -1,0 +1,5 @@
+[
+  { "id": "2026-11-14-c3", "datum": "2026-11-14", "uhrzeit": "16:30", "team": "C3", "gegner": "JSG Elztal Maifeld", "heim": true },
+  { "id": "2026-11-15-1m", "datum": "2026-11-15", "uhrzeit": "15:00", "team": "1. Mannschaft", "gegner": "SV Gonsenheim", "heim": false },
+  { "id": "2026-11-15-u23", "datum": "2026-11-15", "uhrzeit": "15:30", "team": "U23", "gegner": "FC Metternich", "heim": true }
+]

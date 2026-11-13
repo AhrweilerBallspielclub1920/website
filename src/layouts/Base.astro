@@ -1,0 +1,146 @@
+---
+import '../styles/global.css';
+import { getCollection } from 'astro:content';
+
+interface Props { title?: string; description?: string; aktiv?: string }
+const { title, description = 'Ahrweiler BC 1920 e.V. – Fußball im Apollinarisstadion, Bad Neuenahr-Ahrweiler. Von den Bambini bis zur 1. Mannschaft.', aktiv = '' } = Astro.props;
+const seitentitel = title ? `${title} | Ahrweiler BC 1920 e.V.` : 'Ahrweiler BC 1920 e.V. – Offizielle Vereinsseite';
+
+const gruppen = (await getCollection('gruppen')).sort((a, b) => a.data.reihenfolge - b.data.reihenfolge);
+const senioren = gruppen.filter((g) => g.data.bereich === 'Senioren');
+const jugend = gruppen.filter((g) => g.data.bereich === 'Jugend');
+const pinned = (await getCollection('news', ({ data }) => data.angepinnt && !data.entwurf))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())[0];
+---
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{seitentitel}</title>
+  <meta name="description" content={description} />
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="theme-color" content="#B0102A" />
+  <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <meta property="og:image" content="https://ahrweilerbc.com/wappen-512.png" />
+  <meta property="og:title" content={seitentitel} />
+  <meta property="og:description" content={description} />
+  <meta property="og:type" content="website" />
+</head>
+<body>
+  <a href="#inhalt" class="hidden">Zum Inhalt springen</a>
+  {pinned && (
+    <div class="topbar">
+      <div class="wrap">
+        <span><strong>{pinned.data.title}</strong></span>
+        <a href={`/news/${pinned.id}`}>Mehr erfahren →</a>
+      </div>
+    </div>
+  )}
+  <header class="site-header" id="kopf">
+    <div class="wrap">
+      <a href="/" class="brand" aria-label="Ahrweiler BC – Startseite">
+        <img class="wappen" src="/wappen-192.png" alt="" width="58" height="58" />
+        <span>
+          <span class="brand-name">AHRWEILER BC</span>
+          <span class="brand-sub">Ballspiel-Club 1920 e.V.</span>
+        </span>
+      </a>
+      <button class="btn btn-rahmen menu-toggle" type="button" aria-expanded="false" aria-controls="hauptmenue">Menü</button>
+      <nav class="nav" id="hauptmenue" aria-label="Hauptmenü">
+        <a href="/news" aria-current={aktiv === 'news' ? 'page' : undefined}>News</a>
+        <details>
+          <summary>Mannschaften</summary>
+          <div class="dropdown">
+            <span class="label">Senioren</span>
+            {senioren.map((g) => <a href={`/mannschaften/${g.id}`}>{g.data.name}</a>)}
+            <span class="label">Jugend</span>
+            {jugend.map((g) => <a href={`/mannschaften/${g.id}`}>{g.data.name}</a>)}
+          </div>
+        </details>
+        <details>
+          <summary>Jugend</summary>
+          <div class="dropdown">
+            <a href="/jugend">Unsere Jugendarbeit</a>
+            <a href="/jugend/probetraining">Probetraining</a>
+            <a href="/jugend/fussballschule">ABC-Fußballschule</a>
+            <a href="/jugend/ferienfreizeit">Fußball-Ferienfreizeit</a>
+            <a href="/jugend#kinderschutz">Kinderschutz</a>
+          </div>
+        </details>
+        <details>
+          <summary>Verein</summary>
+          <div class="dropdown">
+            <a href="/verein/vorstand">Vorstand</a>
+            <a href="/verein/geschichte">Geschichte</a>
+            <a href="/verein/stadion">Stadion &amp; Plätze</a>
+            <a href="/verein/schiedsrichter">Schiedsrichter</a>
+            <a href="/verein/vereinsheim">Vereinsheim</a>
+            <a href="/mitglied-werden">Mitglied werden</a>
+            <a href="/jobs">ABC 4 Future / Jobs</a>
+          </div>
+        </details>
+        <a href="/sponsoren" aria-current={aktiv === 'sponsoren' ? 'page' : undefined}>Sponsoren</a>
+        <a href="/kontakt" aria-current={aktiv === 'kontakt' ? 'page' : undefined}>Kontakt</a>
+      </nav>
+      <a href="/jugend/probetraining" class="btn btn-rot header-cta">Probetraining anfragen</a>
+    </div>
+  </header>
+
+  <main id="inhalt">
+    <slot />
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="col">
+        <img src="/wappen-192.png" alt="Wappen Ahrweiler BC" width="84" height="84" style="margin-bottom:6px" loading="lazy" />
+        <span class="display" style="font-size:28px">AHRWEILER BC 1920 e.V.</span>
+        <span>Kreuzstraße 108</span>
+        <span>53474 Bad Neuenahr-Ahrweiler</span>
+        <a href="mailto:info@ahrweilerbc.com">info@ahrweilerbc.com</a>
+        <span class="motto">zusammen.immer.abc.</span>
+      </div>
+      <nav class="col" aria-label="Mannschaften">
+        <h4>Mannschaften</h4>
+        <a href="/mannschaften/1-mannschaft">1. Mannschaft</a>
+        <a href="/mannschaften/u23">U23</a>
+        <a href="/mannschaften">Alle Teams</a>
+        <a href="/jugend/probetraining">Probetraining</a>
+      </nav>
+      <nav class="col" aria-label="Service">
+        <h4>Service</h4>
+        <a href="/mitglied-werden">Mitglied werden</a>
+        <a href="/verein/vereinsheim">Vereinsheim</a>
+        <a href="/jugend#kinderschutz">Kinderschutz</a>
+        <a href="/jobs">Jobs / ABC 4 Future</a>
+      </nav>
+      <nav class="col" aria-label="Rechtliches">
+        <h4>Rechtliches</h4>
+        <a href="/kontakt">Kontakt</a>
+        <a href="/impressum">Impressum</a>
+        <a href="/datenschutz">Datenschutz</a>
+      </nav>
+    </div>
+    <div class="footer-bottom">
+      <div class="wrap">© {new Date().getFullYear()} Ahrweiler Ballspiel-Club 1920 e.V. · Respekt · Toleranz · Leidenschaft</div>
+    </div>
+  </footer>
+
+  <script>
+    const header = document.getElementById('kopf');
+    const btn = header?.querySelector('.menu-toggle');
+    btn?.addEventListener('click', () => {
+      const open = header!.classList.toggle('open');
+      btn.setAttribute('aria-expanded', String(open));
+    });
+    // Dropdowns schließen, wenn außerhalb geklickt wird
+    document.addEventListener('click', (e) => {
+      document.querySelectorAll('.nav details[open]').forEach((d) => {
+        if (!d.contains(e.target as Node)) d.removeAttribute('open');
+      });
+    });
+  </script>
+</body>
+</html>

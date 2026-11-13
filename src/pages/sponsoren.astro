@@ -1,0 +1,27 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHead from '../components/PageHead.astro';
+import sponsoren from '../data/sponsoren.json';
+---
+<Base title="Sponsoren" aktiv="sponsoren">
+  <PageHead titel="SPONSOREN & PARTNER" text="Danke an alle Unternehmen, die den Ahrweiler BC unterstützen." />
+  <section class="section">
+    <div class="wrap stack-lg">
+      {sponsoren.partner.length > 0 ? (
+        <div class="grid-sm">{sponsoren.partner.map((p: any) => <a class="card" href={p.url} target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:center;height:110px">{p.logo ? <img src={p.logo} alt={p.name} style="max-height:70px" /> : <strong>{p.name}</strong>}</a>)}</div>
+      ) : (
+        <div class="grid-sm">{Array.from({ length: 8 }).map(() => <div class="bild-platzhalter" style="height:110px;border:1px dashed var(--linie);background:#fff">Logo</div>)}</div>
+      )}
+    </div>
+  </section>
+  <section class="section section-sand">
+    <div class="wrap row" style="gap:32px">
+      <div class="stack" style="flex:2 1 480px">
+        <span class="eyebrow">Partner werden</span>
+        <h2>Jugendfußball in der Region stärken</h2>
+        <p class="muted">Vom Trikotsatz für ein Jugendteam bis zur Bandenwerbung im Apollinarisstadion – sprich uns an.</p>
+      </div>
+      <div style="flex:1 1 260px;display:flex;align-items:center"><a class="btn btn-rot" href="mailto:info@ahrweilerbc.com?subject=Sponsoring">Sponsoring anfragen</a></div>
+    </div>
+  </section>
+</Base>

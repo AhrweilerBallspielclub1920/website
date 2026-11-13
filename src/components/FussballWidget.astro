@@ -1,0 +1,27 @@
+---
+// Offizielles fussball.de-Widget mit 2-Klick-Lösung.
+// Gespeichert werden nur Typ und ID – das Markup erzeugt die Seite selbst (kein fremder Code im CMS).
+interface Props { typ: string; id: string }
+const { typ, id } = Astro.props;
+const titel: Record<string, string> = {
+  'table': 'Tabelle',
+  'next-match': 'Nächstes Spiel',
+  'matches': 'Spielplan',
+  'team-matches': 'Spielplan',
+  'club-matches': 'Vereinsspielplan'
+};
+const label = titel[typ] ?? 'fussball.de';
+---
+<div class="fb-widget card" data-fb-widget>
+  <div class="fb-consent stack" style="gap:10px;align-items:flex-start">
+    <strong>{label}</strong>
+    <p class="small muted">Die Daten werden direkt von fussball.de geladen. Dabei wird deine IP-Adresse an fussball.de übertragen. Mehr in der <a href="/datenschutz">Datenschutzerklärung</a>.</p>
+    <div class="row" style="gap:10px">
+      <button type="button" class="btn btn-rot" data-fb-load>{label} anzeigen</button>
+      <label class="check small"><input type="checkbox" data-fb-remember /> <span>fussball.de immer laden</span></label>
+    </div>
+  </div>
+  <div class="fb-target" hidden>
+    <div class="fussballde_widget" data-id={id} data-type={typ} style="width: 100%"></div>
+  </div>
+</div>
