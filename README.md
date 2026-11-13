@@ -30,7 +30,7 @@ npm run build    # fertige Seite in dist/
 **Jetzt (Vorschau):** Ordner `dist` in Netlify bei Projekt *ahrweilerbc-website* unter **Deploys** per Drag & Drop hochladen.
 
 **Dauerhaft (empfohlen):**
-1. Projekt in ein GitHub-Repository legen (z. B. `ahrweilerbc/website`, privat).
+1. Projekt in ein GitHub-Repository legen (`ahrweilerbc/website`, privat).
 2. In Netlify das Projekt mit dem Repository verbinden – jede Änderung wird dann automatisch gebaut.
 3. Redaktions-Login einrichten:
    - In GitHub eine OAuth-App anlegen (Settings → Developer settings → OAuth Apps), Callback-URL `https://api.netlify.com/auth/done`.
