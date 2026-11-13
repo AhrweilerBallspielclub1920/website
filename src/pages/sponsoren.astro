@@ -8,9 +8,17 @@ import sponsoren from '../data/sponsoren.json';
   <section class="section">
     <div class="wrap stack-lg">
       {sponsoren.partner.length > 0 ? (
-        <div class="grid-sm">{sponsoren.partner.map((p: any) => <a class="card" href={p.url} target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:center;height:110px">{p.logo ? <img src={p.logo} alt={p.name} style="max-height:70px" /> : <strong>{p.name}</strong>}</a>)}</div>
+        <ul class="sponsor-grid" aria-label="Sponsoren">
+          {sponsoren.partner.map((p: any) => (
+            <li>
+              {p.url
+                ? <a class="sponsor-kachel" href={p.url} target="_blank" rel="noopener sponsored" title={p.name}><img src={p.logo} alt={p.name} width="480" height="240" loading="lazy" /></a>
+                : <div class="sponsor-kachel" title={p.name}><img src={p.logo} alt={p.name} width="480" height="240" loading="lazy" /></div>}
+            </li>
+          ))}
+        </ul>
       ) : (
-        <div class="grid-sm">{Array.from({ length: 8 }).map(() => <div class="bild-platzhalter" style="height:110px;border:1px dashed var(--linie);background:#fff">Logo</div>)}</div>
+        <p class="muted">Die Sponsoren werden gerade eingepflegt.</p>
       )}
     </div>
   </section>

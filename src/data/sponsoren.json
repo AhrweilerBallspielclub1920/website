@@ -1,4 +1,220 @@
 {
-  "hinweis": "Logos und Namen aus der alten Seite übernehmen – dort sind sie nur als Bilder ohne Namen hinterlegt.",
-  "partner": []
+  "hinweis": "Logos von der alten Seite übernommen (Stand 13.11.2026). Webseiten-Links ergänzen.",
+  "partner": [
+    {
+      "name": "AhrBike Willerscheid",
+      "url": "",
+      "logo": "/sponsoren/ahrbike-willerscheid.webp"
+    },
+    {
+      "name": "Apollinaris",
+      "url": "",
+      "logo": "/sponsoren/apollinaris.webp"
+    },
+    {
+      "name": "Autohaus Baum",
+      "url": "",
+      "logo": "/sponsoren/autohaus-baum.webp"
+    },
+    {
+      "name": "Axis Dachdeckermeister",
+      "url": "",
+      "logo": "/sponsoren/axis-dachdeckermeister.webp"
+    },
+    {
+      "name": "Bauhaus",
+      "url": "",
+      "logo": "/sponsoren/bauhaus.webp"
+    },
+    {
+      "name": "Bauzentrum Hamann",
+      "url": "",
+      "logo": "/sponsoren/bauzentrum-hamann.webp"
+    },
+    {
+      "name": "Capelli Sport",
+      "url": "",
+      "logo": "/sponsoren/capelli-sport.webp"
+    },
+    {
+      "name": "capomenia",
+      "url": "",
+      "logo": "/sponsoren/capomenia.webp"
+    },
+    {
+      "name": "Carpe Diem",
+      "url": "",
+      "logo": "/sponsoren/carpe-diem.webp"
+    },
+    {
+      "name": "CityMix Beton",
+      "url": "",
+      "logo": "/sponsoren/citymix-beton.webp"
+    },
+    {
+      "name": "Dagernova",
+      "url": "",
+      "logo": "/sponsoren/dagernova.webp"
+    },
+    {
+      "name": "dmt Physiotherapie",
+      "url": "",
+      "logo": "/sponsoren/dmt-physiotherapie.webp"
+    },
+    {
+      "name": "EMPWR People",
+      "url": "",
+      "logo": "/sponsoren/empwr-people.webp"
+    },
+    {
+      "name": "Fahrschule Schneider",
+      "url": "",
+      "logo": "/sponsoren/fahrschule-schneider.webp"
+    },
+    {
+      "name": "Fiege",
+      "url": "",
+      "logo": "/sponsoren/fiege.webp"
+    },
+    {
+      "name": "flowcraft",
+      "url": "",
+      "logo": "/sponsoren/flowcraft.webp"
+    },
+    {
+      "name": "Franke",
+      "url": "",
+      "logo": "/sponsoren/franke.webp"
+    },
+    {
+      "name": "Gross Heizungsbau & Sanitär",
+      "url": "",
+      "logo": "/sponsoren/gross-heizungsbau-sanitaer.webp"
+    },
+    {
+      "name": "hk-pack",
+      "url": "",
+      "logo": "/sponsoren/hk-pack.webp"
+    },
+    {
+      "name": "Huther KFZ-Werkstatt & Lackiererei",
+      "url": "",
+      "logo": "/sponsoren/huther-kfz-werkstatt-lackiererei.webp"
+    },
+    {
+      "name": "Intersport Krumholz",
+      "url": "",
+      "logo": "/sponsoren/intersport-krumholz.webp"
+    },
+    {
+      "name": "KIKI Glas- & Gebäudereinigung",
+      "url": "",
+      "logo": "/sponsoren/kiki-glas-gebaeudereinigung.webp"
+    },
+    {
+      "name": "Klaes",
+      "url": "",
+      "logo": "/sponsoren/klaes.webp"
+    },
+    {
+      "name": "Kreissparkasse Ahrweiler",
+      "url": "",
+      "logo": "/sponsoren/kreissparkasse-ahrweiler.webp"
+    },
+    {
+      "name": "Kubach Dachdecker & Gerüstbau",
+      "url": "",
+      "logo": "/sponsoren/kubach-dachdecker-geruestbau.webp"
+    },
+    {
+      "name": "La Brasserie",
+      "url": "",
+      "logo": "/sponsoren/la-brasserie.webp"
+    },
+    {
+      "name": "leguano",
+      "url": "",
+      "logo": "/sponsoren/leguano.webp"
+    },
+    {
+      "name": "Lenné Schlösschen",
+      "url": "",
+      "logo": "/sponsoren/lenne-schloesschen.webp"
+    },
+    {
+      "name": "Linus Wittich",
+      "url": "",
+      "logo": "/sponsoren/linus-wittich.webp"
+    },
+    {
+      "name": "Lotto Rheinland-Pfalz",
+      "url": "",
+      "logo": "/sponsoren/lotto-rheinland-pfalz.webp"
+    },
+    {
+      "name": "medentis medical",
+      "url": "",
+      "logo": "/sponsoren/medentis-medical.webp"
+    },
+    {
+      "name": "MIKA Bau",
+      "url": "",
+      "logo": "/sponsoren/mika-bau.webp"
+    },
+    {
+      "name": "moses",
+      "url": "",
+      "logo": "/sponsoren/moses.webp"
+    },
+    {
+      "name": "MSS Metall & Stahlbau Schmickler",
+      "url": "",
+      "logo": "/sponsoren/mss-metall-stahlbau-schmickler.webp"
+    },
+    {
+      "name": "Planning.plus",
+      "url": "",
+      "logo": "/sponsoren/planning-plus.webp"
+    },
+    {
+      "name": "REWE Jörg Schäfer",
+      "url": "",
+      "logo": "/sponsoren/rewe-joerg-schaefer.webp"
+    },
+    {
+      "name": "Rhein-Ahr-Cardio",
+      "url": "",
+      "logo": "/sponsoren/rhein-ahr-cardio.webp"
+    },
+    {
+      "name": "Rosenmüller",
+      "url": "",
+      "logo": "/sponsoren/rosenmueller.webp"
+    },
+    {
+      "name": "Sachverständigenbüro Wenigmann",
+      "url": "",
+      "logo": "/sponsoren/sachverstaendigenbuero-wenigmann.webp"
+    },
+    {
+      "name": "Sale e Pepe",
+      "url": "",
+      "logo": "/sponsoren/sale-e-pepe.webp"
+    },
+    {
+      "name": "Sedos",
+      "url": "",
+      "logo": "/sponsoren/sedos.webp"
+    },
+    {
+      "name": "Volksbank RheinAhrEifel",
+      "url": "",
+      "logo": "/sponsoren/volksbank-rheinahreifel.webp"
+    },
+    {
+      "name": "Willerscheid Metallbau & Landmaschinen",
+      "url": "",
+      "logo": "/sponsoren/willerscheid-metallbau-landmaschinen.webp"
+    }
+  ]
 }
