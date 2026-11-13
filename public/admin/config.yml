@@ -3,7 +3,7 @@
 # und in Netlify unter "Access control > OAuth" einen GitHub-Provider anlegen (siehe README).
 backend:
   name: github
-  repo: ahrweilerbc/website
+  repo: AhrweilerBallspielclub1920/website
   branch: main
 
 site_url: https://ahrweilerbc.com
