@@ -2,8 +2,14 @@
 title: Dreizehn Spiele, 50 Tore, acht Siege
 date: 2026-11-11
 kategorie: Jugend
+team: ''
 teaser: Wochenrückblick der Jugend – zwölf Teams im Einsatz, 50:17 Tore.
+bild: /uploads/ahrweilerbc_ergebnisse_logo_kachel_1.png
+angepinnt: false
+entwurf: false
+autor: Thomas Lorenz
 ---
+
 Zwölf Jugendmannschaften waren von Mittwoch bis Samstag im Einsatz. Die Bilanz: acht Siege, zwei Unentschieden, drei Niederlagen und 50:17 Tore.
 
 - **A-Jugend:** vier Punkte aus zwei Heimspielen
