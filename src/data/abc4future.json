@@ -1,0 +1,120 @@
+{
+  "kontakt": "info@ahrweilerbc.com",
+  "partner": [
+    {
+      "name": "Augel",
+      "url": "",
+      "logo": "/abc4future/partner/augel.webp"
+    },
+    {
+      "name": "Autohaus Baum",
+      "url": "",
+      "logo": "/abc4future/partner/autohaus-baum.webp"
+    },
+    {
+      "name": "Bauhaus",
+      "url": "",
+      "logo": "/abc4future/partner/bauhaus.webp"
+    },
+    {
+      "name": "Bauzentrum Hamann",
+      "url": "",
+      "logo": "/abc4future/partner/bauzentrum-hamann.webp"
+    },
+    {
+      "name": "Fahrschule Schneider",
+      "url": "",
+      "logo": "/abc4future/partner/fahrschule-schneider.webp"
+    },
+    {
+      "name": "Fiege",
+      "url": "",
+      "logo": "/abc4future/partner/fiege.webp"
+    },
+    {
+      "name": "flowcraft",
+      "url": "",
+      "logo": "/abc4future/partner/flowcraft.webp"
+    },
+    {
+      "name": "Gross Heizungsbau & Sanitär",
+      "url": "",
+      "logo": "/abc4future/partner/gross-heizungsbau-sanitaer.webp"
+    },
+    {
+      "name": "Huther KFZ-Werkstatt & Lackiererei",
+      "url": "",
+      "logo": "/abc4future/partner/huther-kfz-werkstatt-lackiererei.webp"
+    },
+    {
+      "name": "Klaes",
+      "url": "",
+      "logo": "/abc4future/partner/klaes.webp"
+    },
+    {
+      "name": "Kreissparkasse Ahrweiler",
+      "url": "",
+      "logo": "/abc4future/partner/kreissparkasse-ahrweiler.webp"
+    },
+    {
+      "name": "Malerwerkstatt Schüttler",
+      "url": "",
+      "logo": "/abc4future/partner/malerwerkstatt-schuettler.webp"
+    },
+    {
+      "name": "medentis medical",
+      "url": "",
+      "logo": "/abc4future/partner/medentis-medical.webp"
+    },
+    {
+      "name": "MIKA Bau",
+      "url": "",
+      "logo": "/abc4future/partner/mika-bau.webp"
+    },
+    {
+      "name": "MSS Metall & Stahlbau Schmickler",
+      "url": "",
+      "logo": "/abc4future/partner/mss-metall-stahlbau-schmickler.webp"
+    },
+    {
+      "name": "Planning.plus",
+      "url": "",
+      "logo": "/abc4future/partner/planning-plus.webp"
+    },
+    {
+      "name": "Willerscheid Metallbau & Landmaschinen",
+      "url": "",
+      "logo": "/abc4future/partner/willerscheid-metallbau-landmaschinen.webp"
+    }
+  ],
+  "angebote": [
+    {
+      "titel": "Azubis Metallbau, Metallbauer & Poliere (m/w/d)",
+      "firma": "MSS Metall & Stahlbau Schmickler",
+      "bild": "/abc4future/angebote/mss-schmickler.webp",
+      "aktiv": true,
+      "url": "https://www.schmickler-metallbau.de"
+    },
+    {
+      "titel": "Polier / Bauleiter (m/w/d)",
+      "firma": "flowcraft",
+      "bild": "/abc4future/angebote/flowcraft-polier-bauleiter.webp",
+      "aktiv": true,
+      "url": "https://www.flowcraft.de/karriere"
+    },
+    {
+      "titel": "Empfangskraft (m/w/d)",
+      "firma": "flowcraft",
+      "bild": "/abc4future/angebote/empfang.webp",
+      "aktiv": true,
+      "url": "https://www.flowcraft.de/karriere"
+    },
+    {
+      "titel": "Fahrlehrer (m/w/d) – Voll- oder Teilzeit",
+      "firma": "Fahrschule Schneider",
+      "bild": "/abc4future/angebote/fahrschule-schneider-fahrlehrer.webp",
+      "aktiv": true,
+      "url": "https://www.fahrschule-schneider-ahrweiler.de"
+    }
+  ]
+}

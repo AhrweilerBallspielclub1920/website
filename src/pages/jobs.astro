@@ -1,16 +1,217 @@
 ---
 import Base from '../layouts/Base.astro';
-import PageHead from '../components/PageHead.astro';
+import daten from '../data/abc4future.json';
+
+const angebote = daten.angebote.filter((a) => a.aktiv);
+const chips = ['Ausbildung', 'Duales Studium', 'Praktikum', 'Ferienjob', 'Teilzeit', 'Vollzeit', 'Neustart'];
 ---
-<Base title="ABC 4 Future / Jobs">
-  <PageHead titel="ABC 4 FUTURE" text="Wir bringen Mitglieder, Spieler, Trainer und Eltern mit Unternehmen aus der Region zusammen." />
-  <section class="section">
-    <div class="wrap row" style="gap:40px;align-items:flex-start">
-      <div class="prose" style="flex:2 1 520px">
-        <p class="lead">Unsere Partnerunternehmen bieten Ausbildungsplätze, Praxisphasen im dualen Studium, Praktika, Voll- und Teilzeitstellen sowie Ferienjobs.</p>
-        <p>Du suchst ein Praktikum, eine Ausbildung oder willst dich beruflich verändern? Oder du bist Unternehmen und suchst Mitarbeitende? Melde dich – wir stellen den Kontakt her.</p>
+<Base title="ABC 4 Future – Vom Platz in den Job" description="ABC 4 Future: Der Ahrweiler BC bringt Spielerinnen, Spieler und Mitglieder mit Unternehmen aus der Region zusammen – Ausbildung, Praktikum, Ferienjob, Job.">
+
+  <!-- Hero -->
+  <section class="a4f-hero">
+    <div class="wrap a4f-hero-inner">
+      <div class="stack" style="gap:22px;flex:1 1 520px">
+        <span class="a4f-tag">ABC 4 FUTURE</span>
+        <h1>VOM PLATZ<br /><span>IN DEN JOB.</span></h1>
+        <p class="a4f-lead">Ausbildung, Praktikum, Ferienjob oder mal was Neues? Schreib uns. Ohne Lebenslauf, ohne Anschreiben – wir kümmern uns um den Rest.</p>
+        <div class="row">
+          <a class="btn btn-rot a4f-btn" href="#mitmachen">Ich such was</a>
+          <a class="btn btn-rahmen a4f-btn" href="#unternehmen">Wir suchen Leute</a>
+        </div>
       </div>
-      <aside class="box-rot" style="flex:1 1 280px"><h3>Kontakt</h3><a class="btn btn-hell" href="mailto:info@ahrweilerbc.com?subject=ABC%204%20Future">info@ahrweilerbc.com</a></aside>
+      <ul class="a4f-chips" aria-label="Was wir vermitteln">
+        {chips.map((c, i) => <li style={`--r:${[-4, 3, -2, 5, -3, 2, -5][i]}deg`}>{c}</li>)}
+      </ul>
+    </div>
+  </section>
+
+  <!-- So geht's -->
+  <section class="section">
+    <div class="wrap stack-lg">
+      <div class="stack" style="gap:6px">
+        <span class="eyebrow">So einfach geht's</span>
+        <h2>Drei Schritte. Kein Papierkram.</h2>
+      </div>
+      <ol class="a4f-steps">
+        <li>
+          <span class="a4f-nr">1</span>
+          <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          <h3>Schreib uns</h3>
+          <p>Ein paar Zeilen reichen: wer du bist und worauf du Lust hast.</p>
+        </li>
+        <li>
+          <span class="a4f-nr">2</span>
+          <svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="9" cy="8" r="4"/><path d="M1 21v-1a6 6 0 0 1 12 0v1"/><path d="M16 11h6M19 8v6"/></svg>
+          <h3>Wir hören zu</h3>
+          <p>Wir fragen kurz nach und schauen, welcher Partner zu dir passt.</p>
+        </li>
+        <li>
+          <span class="a4f-nr">3</span>
+          <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M3 21h18M5 21V8l7-5 7 5v13"/><path d="M10 21v-6h4v6"/></svg>
+          <h3>Reinschnuppern</h3>
+          <p>Wir stellen den Kontakt her – du lernst den Betrieb persönlich kennen.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- Für Unternehmen -->
+  <section class="a4f-statement" id="unternehmen">
+    <div class="wrap a4f-statement-inner">
+      <div class="stack" style="gap:18px;flex:1 1 480px">
+        <span class="a4f-tag a4f-tag-hell">FÜR UNTERNEHMEN</span>
+        <h2>Wir kennen unsere<br />Jungs und Mädels.</h2>
+        <p>Wir sehen sie zwei-, dreimal pro Woche auf dem Platz. Wir wissen, wer pünktlich ist, wer mit anpackt und wer nach einer Niederlage wieder aufsteht. Diese Empfehlung steht in keinem Lebenslauf.</p>
+        <a class="btn btn-hell a4f-btn" style="align-self:flex-start" href={`mailto:${daten.kontakt}?subject=ABC%204%20Future%20%E2%80%93%20Partner%20werden`}>Partner werden</a>
+      </div>
+      <ul class="a4f-werte">
+        <li><strong>Teamgeist</strong><span>Gelernt in jeder Trainingseinheit.</span></li>
+        <li><strong>Verlässlichkeit</strong><span>Wer fehlt, fehlt der Mannschaft.</span></li>
+        <li><strong>Einsatz</strong><span>Auch bei Regen und im Winter.</span></li>
+        <li><strong>Persönlich empfohlen</strong><span>Statt Bewerbungsstapel ein direkter Draht zu uns.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Stimme -->
+  <section class="section section-creme">
+    <div class="wrap">
+      <figure class="a4f-quote">
+        <blockquote>„Aus erster Hand konnte ich von ABC 4 FUTURE profitieren und habe mit der flowcraft GmbH einen großartigen Arbeitgeber gefunden.“</blockquote>
+        <figcaption><strong>Sarah Preußner</strong> · Trainerin und Vorstandsmitglied</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  {angebote.length > 0 && (
+    <section class="section">
+      <div class="wrap stack-lg">
+        <div class="stack" style="gap:6px">
+          <span class="eyebrow">Aktuell gesucht</span>
+          <h2>Das bieten unsere Partner gerade</h2>
+        </div>
+        <div class="a4f-angebote">
+          {angebote.map((a) => (
+            <a class="a4f-angebot" href={a.url || `mailto:${daten.kontakt}`} target={a.url ? '_blank' : undefined} rel={a.url ? 'noopener' : undefined}>
+              <img src={a.bild} alt={`Stellenanzeige: ${a.titel} bei ${a.firma}`} loading="lazy" />
+              <span class="a4f-angebot-text"><strong>{a.titel}</strong><span>{a.firma}</span></span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- Partner -->
+  <section class="section section-creme">
+    <div class="wrap stack-lg">
+      <div class="stack" style="gap:6px">
+        <span class="eyebrow">Unsere Partner</span>
+        <h2>Diese Betriebe sind dabei</h2>
+      </div>
+      <ul class="sponsor-grid" aria-label="Partnerunternehmen">
+        {daten.partner.map((p) => (
+          <li>
+            {p.url
+              ? <a class="sponsor-kachel" href={p.url} target="_blank" rel="noopener" title={p.name}><img src={p.logo} alt={p.name} width="480" height="240" loading="lazy" /></a>
+              : <div class="sponsor-kachel" title={p.name}><img src={p.logo} alt={p.name} width="480" height="240" loading="lazy" /></div>}
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- Formular -->
+  <section class="section" id="mitmachen">
+    <div class="wrap a4f-form-wrap">
+      <div class="stack" style="gap:12px;flex:1 1 320px">
+        <span class="eyebrow">Meld dich</span>
+        <h2>Einfach schreiben.</h2>
+        <p class="muted">Ob Spieler, Spielerin, Eltern, Trainer oder Vereinsmitglied – und auch als Unternehmen. Wir melden uns persönlich.</p>
+        <p class="muted small">Lieber per Mail? <a href={`mailto:${daten.kontakt}?subject=ABC%204%20Future`}>{daten.kontakt}</a></p>
+      </div>
+      <form name="abc4future" method="POST" action="/danke" data-netlify="true" netlify-honeypot="bot-field" class="card stack" style="flex:2 1 520px;padding:28px">
+        <input type="hidden" name="form-name" value="abc4future" />
+        <input type="hidden" name="subject" value="ABC 4 Future – neue Anfrage" />
+        <p class="hidden"><label>Nicht ausfüllen: <input name="bot-field" tabindex="-1" autocomplete="off" /></label></p>
+        <div class="form-grid">
+          <div class="feld"><label for="f-name">Dein Name</label><input id="f-name" name="name" required autocomplete="name" /></div>
+          <div class="feld"><label for="f-kontakt">E-Mail oder Handy</label><input id="f-kontakt" name="kontakt" required /></div>
+        </div>
+        <div class="feld"><label for="f-wer">Ich bin …</label>
+          <select id="f-wer" name="ich_bin">
+            <option>Spieler/in beim ABC</option><option>Elternteil</option><option>Trainer/in</option><option>Vereinsmitglied</option><option>Unternehmen</option>
+          </select>
+        </div>
+        <fieldset class="a4f-wahl">
+          <legend>Ich interessiere mich für …</legend>
+          {chips.map((c) => <label><input type="checkbox" name="interesse" value={c} /><span>{c}</span></label>)}
+        </fieldset>
+        <div class="feld"><label for="f-msg">Noch was? (optional)</label><textarea id="f-msg" name="nachricht" style="min-height:100px"></textarea></div>
+        <label class="check"><input type="checkbox" name="einwilligung" value="ja" required /> <span>Der Ahrweiler BC darf meine Angaben nutzen, um sich bei mir zu melden und passende Kontakte herzustellen. Mehr in der <a href="/datenschutz">Datenschutzerklärung</a>.</span></label>
+        <button class="btn btn-rot a4f-btn" type="submit" style="align-self:flex-start">Abschicken</button>
+      </form>
     </div>
   </section>
 </Base>
+
+<style>
+  .a4f-hero { background: var(--dunkel); color: #fff; position: relative; overflow: hidden; border-bottom: 3px solid var(--gold); }
+  .a4f-hero::before { content: ''; position: absolute; width: 620px; height: 620px; right: -160px; top: -220px; background: var(--rot); border-radius: 50%; opacity: .9; }
+  .a4f-hero::after { content: ''; position: absolute; width: 260px; height: 260px; right: 300px; bottom: -150px; border: 3px solid var(--gold); border-radius: 50%; opacity: .6; }
+  .a4f-hero-inner { position: relative; z-index: 1; display: flex; flex-wrap: wrap; gap: 40px; align-items: center; padding-top: 80px; padding-bottom: 80px; }
+  .a4f-hero h1 { font-size: clamp(54px, 9vw, 104px); line-height: .9; }
+  .a4f-hero h1 span { color: var(--gold-hell); }
+  .a4f-lead { font-size: 20px; max-width: 540px; color: #EDE5DA; }
+  .a4f-tag { align-self: flex-start; font-family: var(--display); font-weight: 800; letter-spacing: .08em; font-size: 16px; background: var(--gold); color: var(--dunkel); padding: 6px 14px; border-radius: 6px; transform: rotate(-2deg); }
+  .a4f-tag-hell { background: #fff; color: var(--rot-dunkel); }
+  .a4f-btn { min-height: 52px; padding: 14px 26px; font-size: 17px; border-radius: 999px; }
+  .a4f-hero .btn-rahmen { color: #fff; }
+  .a4f-chips { list-style: none; margin: 0; padding: 0; flex: 1 1 320px; display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+  .a4f-chips li { transform: rotate(var(--r)); background: #fff; color: var(--dunkel); font-family: var(--display); font-weight: 700; font-size: 24px; padding: 10px 20px; border-radius: 999px; box-shadow: 0 10px 24px rgba(0,0,0,.25); }
+  .a4f-chips li:nth-child(3n+2) { background: var(--gold-hell); }
+  .a4f-chips li:nth-child(3n) { background: var(--rot-hell); color: var(--rot-dunkel); }
+
+  .a4f-steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 20px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+  .a4f-steps li { position: relative; background: var(--creme); border-radius: 18px; padding: 28px 24px 24px; display: flex; flex-direction: column; gap: 10px; overflow: hidden; }
+  .a4f-steps li svg { width: 38px; height: 38px; fill: none; stroke: var(--rot); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .a4f-steps h3 { font-family: var(--display); font-size: 30px; font-weight: 800; }
+  .a4f-steps p { color: var(--text-2); }
+  .a4f-nr { position: absolute; right: 14px; top: -14px; font-family: var(--display); font-weight: 800; font-size: 120px; line-height: 1; color: var(--gold); opacity: .35; }
+
+  .a4f-statement { background: radial-gradient(120% 120% at 0% 0%, #C2213A 0%, var(--rot) 45%, var(--rot-dunkel) 100%); color: #fff; }
+  .a4f-statement-inner { display: flex; flex-wrap: wrap; gap: 40px; align-items: center; padding-top: 72px; padding-bottom: 72px; }
+  .a4f-statement h2 { font-size: clamp(40px, 6vw, 68px); line-height: .95; }
+  .a4f-statement p { font-size: 19px; max-width: 560px; color: #FCEFEF; }
+  .a4f-werte { list-style: none; margin: 0; padding: 0; flex: 1 1 380px; display: grid; gap: 12px; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .a4f-werte li { background: rgba(255,255,255,.1); border: 1px solid rgba(230,204,138,.45); border-radius: 14px; padding: 18px; display: flex; flex-direction: column; gap: 4px; }
+  .a4f-werte strong { font-family: var(--display); font-size: 24px; color: var(--gold-hell); }
+  .a4f-werte span { font-size: 15px; color: #FCEFEF; }
+
+  .a4f-quote { margin: 0 auto; max-width: 820px; text-align: center; display: flex; flex-direction: column; gap: 14px; }
+  .a4f-quote blockquote { margin: 0; font-family: var(--display); font-weight: 700; font-size: clamp(26px, 3.4vw, 36px); line-height: 1.15; }
+  .a4f-quote figcaption { color: var(--text-2); }
+  .a4f-quote figcaption strong { color: var(--gold-text); }
+
+  .a4f-angebote { display: grid; gap: 20px; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); }
+  .a4f-angebot { display: flex; flex-direction: column; background: #fff; border: 1px solid var(--linie); border-radius: 16px; overflow: hidden; color: var(--text); transition: transform .15s, box-shadow .15s, border-color .15s; }
+  .a4f-angebot:hover { transform: translateY(-3px); box-shadow: 0 12px 28px rgba(42,36,32,.1); border-color: var(--gold); text-decoration: none; color: var(--text); }
+  .a4f-angebot img { width: 100%; aspect-ratio: 4 / 5; object-fit: contain; background: var(--sand); }
+  .a4f-angebot-text { padding: 14px 16px; display: flex; flex-direction: column; gap: 2px; }
+  .a4f-angebot-text span { font-size: 14px; color: var(--text-2); }
+
+  .a4f-form-wrap { display: flex; flex-wrap: wrap; gap: 40px; align-items: flex-start; }
+  .a4f-wahl { border: 0; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+  .a4f-wahl legend { font-weight: 600; font-size: 15px; margin-bottom: 8px; padding: 0; }
+  .a4f-wahl label { position: relative; font-weight: 600; }
+  .a4f-wahl input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+  .a4f-wahl span { display: inline-flex; align-items: center; min-height: 44px; padding: 8px 16px; border-radius: 999px; border: 1.5px solid #C9BDAD; cursor: pointer; font-size: 15px; }
+  .a4f-wahl input:checked + span { background: var(--rot); border-color: var(--rot); color: #fff; }
+  .a4f-wahl input:focus-visible + span { outline: 3px solid var(--gold); outline-offset: 2px; }
+
+  @media (max-width: 640px) {
+    .a4f-hero::before { width: 380px; height: 380px; right: -200px; top: -160px; }
+    .a4f-chips li { font-size: 19px; }
+    .a4f-werte { grid-template-columns: 1fr; }
+  }
+</style>

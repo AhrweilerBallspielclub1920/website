@@ -159,3 +159,30 @@ collections:
               - { name: name, label: Name, widget: string }
               - { name: url, label: Webseite, widget: string, required: false }
               - { name: logo, label: Logo, widget: image, required: false }
+      - name: abc4future
+        label: ABC 4 Future
+        file: src/data/abc4future.json
+        fields:
+          - { name: kontakt, label: Kontakt-E-Mail, widget: string }
+          - name: angebote
+            label: Aktuelle Angebote
+            label_singular: Angebot
+            widget: list
+            required: false
+            summary: "{{firma}} – {{titel}}"
+            fields:
+              - { name: titel, label: Stelle, widget: string }
+              - { name: firma, label: Firma, widget: string }
+              - { name: bild, label: Stellenanzeige (Bild), widget: image }
+              - { name: url, label: Link zur Bewerbung, widget: string, required: false }
+              - { name: aktiv, label: Anzeigen, widget: boolean, default: true, hint: "Ausschalten, sobald die Stelle besetzt ist." }
+          - name: partner
+            label: Partnerbetriebe
+            label_singular: Partner
+            widget: list
+            required: false
+            summary: "{{name}}"
+            fields:
+              - { name: name, label: Name, widget: string }
+              - { name: url, label: Webseite, widget: string, required: false }
+              - { name: logo, label: Logo, widget: image }
