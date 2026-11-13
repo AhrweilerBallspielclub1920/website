@@ -4,7 +4,12 @@ date: 2026-11-11
 kategorie: Senioren
 team: 1. Mannschaft
 teaser: 2:0 unter Flutlicht – wichtiger Sieg im Abstiegskampf.
+bild: /uploads/whatsapp-image-2026-11-09-at-18-44-02.png
+angepinnt: false
+entwurf: false
+autor: Thomas Lorenz
 ---
+
 Unter Flutlicht hat der ABC das Kellerduell gegen die Sportfreunde Eisbachtal mit 2:0 gewonnen – der zweite Saisonsieg. Nach torloser erster Hälfte traf Altin Mulaki in der 59. Minute, Sanih Music legte in der Nachspielzeit per Hacke nach. Michael Zadach hielt die beste Chance der Gäste.
 
 Zum Abschluss der Hinrunde geht es am Sonntag, 15. November, um 15:00 Uhr zum SV Gonsenheim.
