@@ -14,7 +14,7 @@
     "@fontsource/barlow-condensed": "^5.3.0",
     "@fontsource/inter": "^5.2.0",
     "@sveltia/cms": "^0.265.1",
-    "astro": "^7.4.11"
+    "astro": "^7.4.13"
   },
   "engines": {
     "node": ">=22.23.4"
